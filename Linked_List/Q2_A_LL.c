@@ -103,7 +103,25 @@ int main()
 
 void alternateMergeLinkedList(LinkedList *ll1, LinkedList *ll2)
 {
-    /* add your code here */
+	int count = (ll1->size < ll2->size) ? ll1->size : ll2->size; // 두 리스트 중 짧은 길이 확인
+
+	for(int i = 0; i < count; i++){ //짧은 사이즈까지 반복
+		int val = findNode(ll2,0) -> item; // 리스트2의 첫번째 주소의 값을 현재값으로 한다
+
+		insertNode(ll1, 2*i+1, val); // 리스트1 홀수번째 자리에 현재 값을 넣는다
+		removeNode(ll2,0); // 리스트2 첫번째 인덱스에 있는 값을 지운다
+
+	}
+
+	// int count = (ll1->size < ll2->size)? ll1->size: ll2->size;
+
+	// for(int i = 0; i < count; i++) {
+	// 	int value = findNode(ll2,0)->item;
+	// 	insertNode(ll1, 2*i+1, value);
+	// 	removeNode(ll2,0);
+	// }
+
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
