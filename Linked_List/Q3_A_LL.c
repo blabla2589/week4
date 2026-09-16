@@ -84,10 +84,47 @@ int main()
 
 //////////////////////////////////////////////////////////////////////////////////
 
-void moveOddItemsToBack(LinkedList *ll)
-{
-	/* add your code here */
+void moveOddItemsToBack(LinkedList *ll){
+	
+		int len = ll->size; // 노드 총 길이
+		int count = 0; // 반복 횟수
+
+		for(int i = 0; count < len; ){ //노드 길이 보다 작을 때까지 돌려라
+
+			int val = findNode(ll, i) -> item; // i번째 노드의 주소, 그 주소로 찾아가서, 안에 있는 진짜 값(item)을 꺼냄
+
+			if(val % 2 == 1) { // 홀수면?
+				removeNode(ll,i); // 현재 값을 지워라
+				insertNode(ll,ll->size,val); // 맨 뒤에 현재 값을 넣어라
+			} else { // 짝수면?
+				i += 1; //인덱스 증가
+			}
+			count += 1; //반복 횟수 증가
+		}
 }
+
+
+// {
+
+// 	int len = ll->size; //총 길이
+// 	int count = 0; //반복 횟수
+// 	int i = 0;
+
+// 	while (count < len) {
+// 		int val = findNode(ll, i)->item; // i번째의 값
+
+// 		if(val % 2 == 1) { //현재 값이 홀수?
+// 			removeNode(ll,i); //현재 값 제거
+// 			insertNode(ll, ll->size, val); //현재 값을 맨 뒤에 삽입
+
+// 		} else {i += 1;
+// 		} count += 1;
+// 		}
+
+
+// 	}
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 
