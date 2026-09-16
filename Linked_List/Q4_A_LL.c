@@ -84,9 +84,23 @@ int main()
 
 //////////////////////////////////////////////////////////////////////////////////
 
-void moveEvenItemsToBack(LinkedList *ll)
-{
-	/* add your code here */
+void moveEvenItemsToBack(LinkedList *ll) {
+
+	int len = ll->size; //총 길이
+
+	int cnt = 0; //반복 횟수
+
+	for(int i = 0; cnt < len; ) { //총 길이 만큼 반복해라
+		int val = findNode(ll, i) -> item; //현재 값
+		if(val % 2 == 0) { //짝수라면?
+			removeNode(ll, i);
+			insertNode(ll, ll->size, val);
+		} else { //홀수라면
+			 i += 1; // 인덱스 값을 증가
+		}
+		cnt += 1; //반복 횟수 값을 증가
+	}
+	
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
