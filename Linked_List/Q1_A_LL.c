@@ -86,11 +86,29 @@ int main()
 	return 0;
 }
 
+
+
+
 //////////////////////////////////////////////////////////////////////////////////
 
 int insertSortedLL(LinkedList *ll, int item)
 {
-	/* add your code here */
+	int i = 0; // 추적변수
+
+	for(i = 0; i < ll->size; i++){ //중간에 자리를 찾았을 때
+		int val = findNode(ll, i) -> item; //현재의 값
+		
+		if (val == item) { // 이미 리스트에 값이 존재하면
+			return -1;
+		} else if (val > item) { // 현재 값이 새 값보다 크면
+			insertNode(ll, i, item);
+			return i; //"함수 전체"를 끝내는 거야, "for문만" 끝내는 게 아니야
+		}
+
+	}
+	insertNode(ll, i, item); // 끝까지 못 찾았을 때(=맨 뒤에 넣어야 할 때)
+			return i;
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
