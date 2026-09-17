@@ -102,10 +102,50 @@ int main()
 
 void frontBackSplitLinkedList(LinkedList *ll, LinkedList *resultFrontList, LinkedList *resultBackList)
 {
-	/* add your code here */
+	// 2, 3, 5, 6, 7
+	int len = ll->size % 2 == 0? ll->size / 2 : ll->size / 2 +1; //5/2 = 2+1 = 3
+	int cnt = 0;
+	int total = ll->size;
+
+	for(int i = 0; cnt < total;) {
+		int val = findNode(ll, i) -> item;
+
+		if(cnt < len) {
+			insertNode(resultFrontList,resultFrontList -> size, val);
+			removeNode(ll, 0);
+		} else{
+			insertNode(resultBackList, resultBackList->size, val);
+			removeNode(ll, 0);
+		}
+		++cnt;
+	}
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
+
+'''
+	// 2, 3, 5, 6, 7
+	int len = ll->size % 2 == 0 ? ll->size / 2 : ll->size / 2 + 1;//길이 확인하여 반으로 나누기기 5 / 2 = 2 + 1 = 3
+
+	// int i = 0;
+	int cnt = 0; //반복 횟수
+	int total = ll->size; // 값 고정
+	
+	for(int i = 0; cnt < total; ){//리스트 길이 만큼 순회
+
+		int val = findNode(ll, i) -> item; //2
+
+		if(cnt < len){ //2 < 3
+		insertNode(resultFrontList, resultFrontList->size, val);
+		removeNode(ll, 0);
+		} else {
+		insertNode(resultBackList, resultBackList->size, val);
+		removeNode(ll, 0);
+		}
+		cnt += 1;
+	}
+'''
 
 void printList(LinkedList *ll){
 
